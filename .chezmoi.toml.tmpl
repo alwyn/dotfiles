@@ -1,0 +1,16 @@
+{{- $name := promptStringOnce . "name" "Full name" -}}
+{{- $workmail := promptStringOnce . "workmail" "Work Email" -}}
+{{- $nomadsmail := promptStringOnce . "nomadsmail" "Nomads Email" -}}
+{{- $gmail := promptStringOnce . "gmail" "Gmail" -}}
+{{- $proton := promptStringOnce . "proton" "Proton" -}}
+
+[data]
+  name = {{ $name | quote }}
+  workmail = {{ $workmail | quote }}
+  nomadsmail = {{ $nomadsmail | quote }}
+  gmail = {{ $gmail | quote }}
+  proton = {{ $proton | quote }}
+
+encryption = "gpg"
+[gpg]
+  recipient = {{ $proton | quote }}

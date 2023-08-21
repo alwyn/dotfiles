@@ -1,0 +1,48 @@
+#+title: Maven Settings XML file
+#+author: Alwyn Schoeman
+#+PROPERTY: header-args :tangle private_readonly_settings.xml.tmpl
+#+auto_tangle: t
+#+STARTUP: showeverything
+
+* Configuration
+
+The following defines the private tokens for Gitlab Release and Snapshot repositories.
+
+#+begin_src conf
+<settings xmlns="http://maven.apache.org/SETTINGS/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd">
+  <servers>
+    <server>
+      <id>gitlab-maven-releases</id>
+      <configuration>
+        <httpHeaders>
+          <property>
+            <name>Private-Token</name>
+            <!-- values can be hard-coded like this -->
+            <value>{{ onepasswordRead "op://Private/yduaza6vw57p754etjgcgsfx7m/password" }}</value>
+            <!-- or loaded from environment variables like this
+            <value>${env.GITLAB_TOKEN}</value>
+            -->
+          </property>
+        </httpHeaders>
+      </configuration>
+    </server>
+    <server>
+      <id>gitlab-maven-snapshots</id>
+      <configuration>
+        <httpHeaders>
+          <property>
+            <name>Private-Token</name>
+            <!-- values can be hard-coded like this -->
+            <value>{{ onepasswordRead "op://Private/yduaza6vw57p754etjgcgsfx7m/password" }}</value>
+            <!-- or loaded from environment variables like this
+            <value>${env.GITLAB_TOKEN}</value>
+            -->
+          </property>
+        </httpHeaders>
+      </configuration>
+    </server>
+  </servers>
+</settings>
+
+#+end_src

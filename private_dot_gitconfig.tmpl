@@ -1,0 +1,16 @@
+[user]
+  name = {{ .name }}
+  email = {{ .gmail }}
+  signingkey = 2339AD153EB4F73F
+
+[commit]
+  gpgsign = true
+
+[init]
+  defaultbranch = main
+
+[includeIf "gitdir:~/s/a"]
+  path = ~/.config/git/alwyn.gitconfig
+
+[includeIf "gitdir:~/s/p"]
+  path = ~/.config/git/paymentology.gitconfig
