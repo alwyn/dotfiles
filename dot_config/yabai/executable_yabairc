@@ -1,0 +1,83 @@
+#!/usr/bin/env sh
+
+#
+# for this to work you must configure sudo such that
+# it will be able to run the command without password
+#
+# see this wiki page for information:
+#  - https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#configure-scripting-addition
+#
+sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+#
+
+yabai -m config layout bsp
+yabai -m config window_placement second_child
+yabai -m config auto_balance off
+# Determine which display a new window will be spawned
+# default - window is tiles at the display it happens to spawn at
+# focused - yabai default, tiled at display that has focus
+# cursor - window is tiled at display that has mouse cursor
+yabai -m config window_origin_display focused
+
+# padding
+yabai -m config top_padding 10
+yabai -m config bottom_padding 10
+yabai -m config left_padding 10
+yabai -m config right_padding 10
+yabai -m config window_gap 10
+
+# mouse
+yabai -m config mouse_follows_focus on
+yabai -m config focus_follows_mouse autoraise
+yabai -m config mouse_modifier alt
+# left click + drag
+yabai -m config mouse_action1 move
+# right click + drag
+yabai -m config mouse_action2 resize
+yabai -m config mouse_drop_action swap
+
+# floating windows
+# always on top
+yabai -m config window_topmost off
+# only shadows for floating windows
+yabai -m config window_shadow float
+
+# window border
+yabai -m config window_border off
+yabai -m config window_border_blur off
+yabai -m config window_border_width 4
+yabai -m config active_window_border_color 0xFF8E83B8
+yabai -m config normal_window_border_color 0xFF51424C
+yabai -m config insert_feedback_color 0xFF8E83B8
+yabai -m config active_window_opacity 1.0
+yabai -m config normal_window_opacity 0.9
+
+# Disable specific apps
+yabai -m rule --add app="^System Settings$" manage=off border=off
+yabai -m rule --add app="^System Preferences$" manage=off border=off
+yabai -m rule --add app="^Microsoft Outlook$" space=1
+yabai -m rule --add app="^zoom\.us$" border=off space=2
+yabai -m rule --add app="^Spotify$" space=3
+yabai -m rule --add app="^Intellij IDEA$" space=5
+yabai -m rule --add app="^FireFox$" space=7
+yabai -m rule --add app="^Google Chrome$" space=7
+yabai -m rule --add app="^Slack$" space=9
+yabai -m rule --add app="^VPN Tracker 365$" border=off space=8
+yabai -m rule --add app="^Messages$" space=1
+yabai -m rule --add app="^SpaceLauncher$" manage=off
+yabai -m rule --add app="^Alacritty$" space=4
+yabai -m rule --add app="^Emacs$" space=6
+
+# yabai -m rule --add app="^Calculator$" manage=off
+# yabai -m rule --add app="^Karabiner-Elements$" manage=off
+
+yabai -m space 1 --label mail
+yabai -m space 2 --label zoom
+yabai -m space 3 --label music
+yabai -m space 4 --label term
+yabai -m space 5 --label idea
+yabai -m space 6 --label evil
+yabai -m space 7 --label web
+yabai -m space 8 --label misc
+yabai -m space 9 --label slack

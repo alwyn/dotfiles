@@ -1,0 +1,94 @@
+# Apps
+# cmd - enter: 
+# Changing Window Focus
+
+# Zoom fullscreen
+hyper - f : yabai -m window --toggle zoom-fullscreen
+
+# Toggle gap
+hyper - g : yabai -m space --toggle padding; yabai -m space --toggle gap
+
+hyper - b : yabai -m window --toggle border
+
+# Split toggle
+hyper - e : yabai -m window --toggle split
+
+# Toggle float
+hyper - t : yabai -m window --toggle float; yabai -m window --grid 4:4:1:1:2:2
+
+# toggle border
+# yabai -m window --toggle border
+#  toggle whether on all spaces
+#  yabai -m window --toggle sticky
+#
+
+# Balance
+hyper - 0 : yabai -m space --balance
+
+# Flip
+hyper - y : yabai -m space --mirror x-axis
+hyper - u : yabai -m space --mirror y-axis
+
+# Rotate
+hyper - r : yabai -m space --rotate 90
+
+# change desktop focus
+# Commenting out the ones that are not too common
+# hyper - 1 : yabai -m display --focus 1
+# hyper - 2 : yabai -m display --focus 2
+hyper - tab : yabai -m display --focus recent
+
+# change window focus within space
+hyper - j : yabai -m window --focus south
+hyper - k : yabai -m window --focus north
+hyper - h : yabai -m window --focus west
+hyper - l : yabai -m window --focus east
+
+# swap window
+hyper - u : yabai -m window --swap south
+hyper - i : yabai -m window --swap north
+hyper - y : yabai -m window --swap west
+hyper - o : yabai -m window --swap east
+
+# Warp window
+ctrl + shift - j : yabai -m window --warp south
+ctrl + shift - k : yabai -m window --warp north
+ctrl + shift - h : yabai -m window --warp west
+ctrl + shift - l : yabai -m window --warp east
+
+# switch to space
+# cmd - tab : yabai -m space --focus recent
+cmd - 1 : yabai -m space --focus mail
+cmd - 2 : yabai -m space --focus zoom
+cmd - 3 : yabai -m space --focus music
+cmd - 4 : yabai -m space --focus term
+cmd - 5 : yabai -m space --focus idea
+cmd - 6 : yabai -m space --focus evil
+cmd - 7 : yabai -m space --focus web
+cmd - 8 : yabai -m space --focus misc
+cmd - 9 : yabai -m space --focus slack
+cmd - 0 : yabai -m space --focus recent
+hyper - n : yabai -m space --focus prev
+hyper - m : yabai -m space --focus next
+
+# move to space without focus
+cmd + ctrl - 1 : yabai -m window --space mail
+cmd + ctrl - 2 : yabai -m window --space zoom
+cmd + ctrl - 3 : yabai -m window --space music
+cmd + ctrl - 4 : yabai -m window --space term
+cmd + ctrl - 5 : yabai -m window --space idea
+cmd + ctrl - 6 : yabai -m window --space evil
+cmd + ctrl - 7 : yabai -m window --space web
+cmd + ctrl - 8 : yabai -m window --space misc
+cmd + ctrl - 9 : yabai -m window --space slack
+
+# move to space with focus
+hyper - 1 : yabai -m window --space mail; yabai -m space --focus mail
+hyper - 2 : yabai -m window --space zoom; yabai -m space --focus zoom
+hyper - 3 : yabai -m window --space music; yabai -m space --focus music
+hyper - 4 : yabai -m window --space term; yabai -m space --focus term
+hyper - 5 : yabai -m window --space idea; yabai -m space --focus idea
+hyper - 6 : yabai -m window --space evil; yabai -m space --focus evil
+hyper - 7 : yabai -m window --space web; yabai -m space --focus web
+hyper - 8 : yabai -m window --space misc; yabai -m space --focus misc
+hyper - 9 : yabai -m window --space slack; yabai -m space --focus slack
