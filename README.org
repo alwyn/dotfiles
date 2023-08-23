@@ -234,9 +234,6 @@ set timeoutlen = 2000
 
 let mapleader = " "
 
-nnoremap <leader><leader> ;
-vnoremap <leader><leader> ;
-
 let g:NERDTreeMapActivateNode='l'
 let g:NERDTreeMapJumpParent='h'
 
