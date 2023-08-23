@@ -11,6 +11,7 @@
 
 *** Useful links
 
+[[https://github.com/JetBrains/ideavim][IdeaVim]]
 [[https://www.cyberwizard.io/posts/the-ultimate-ideavim-setup/][CyberWizard ultimate ideavim setup]]
 
 *** Handlers
@@ -34,7 +35,10 @@ sethandler <C-V> a:vim  "Start visual mode in block mode"
 
 *** Plugins
 
-**** Text objects
+**** Text objects - arguments
+
+Enable arguments as text objects.  *argtextobj_pairs* defines how arguments are identified.
+[[https://www.vim.org/scripts/script.php?script_id=2699][Examples]]
 
 #+begin_src conf
 set argtextobj
@@ -44,30 +48,90 @@ let g:argtextobj_pairs="(:),{:},<:>,[:]"
 **** Commentary
 
 Shortcuts for adding comments.
+[[https://github.com/tpope/vim-commentary/blob/master/doc/commentary.txt][Commentary usage documentation]].
 
 #+begin_src conf
 set commentary
 #+end_src
 
-**** Rest of plugins (SPLIT OUT)
+**** Highlightedyank
+
+Highlights the yanked text for a period of time.
+[[https://github.com/machakann/vim-highlightedyank/blob/master/doc/highlightedyank.txt][Documentation]]
 
 #+begin_src conf
 set highlightedyank
-set NERDTree
-set textobj-entire
-"set indent-object
-set which-key
-set sneak
-"" surround must come after sneak so that sneak don't steal S
-set surround
+#+end_src
+**** NERDTree
 
+Enable and use NERDTree for the project pane.
+[[https://github.com/JetBrains/ideavim/wiki/NERDTree-support][Instructions]]
+
+#+begin_src conf
+set NERDTree
+#+end_src
+**** Text objects - entire buffer
+
+Add commands for treating entire buffer as a text object.
+[[https://github.com/kana/vim-textobj-entire/blob/master/doc/textobj-entire.txt][Instructions]]
+
+#+begin_src conf
+set textobj-entire
+#+end_src
+**** Text objects - indent  (DISABLED)
+
+Text objects based on indentation level, useful for languages like Python.
+[[https://github.com/michaeljsmith/vim-indent-object/blob/master/doc/indent-object.txt][Instructions]]
+
+#+begin_src conf
+""set indent-object
+#+end_src
+**** Which key
+
+This just enables Which key, configuration to follow in another section.
+
+Which key enables the use of a leader key and menu.
+
+#+begin_src conf
+set which-key
+#+end_src
+**** sneak
+
+Sneak allows you to search forwards and backwards with 2 characters instead of the usual 1.
+[[https://github.com/Mishkun/ideavim-sneak#usage][Usage]]
+
+#+begin_src conf
+set sneak
+#+end_src
+**** Surround
+
+Surround a text object with a single character, but perhaps more (dont' know).
+[[https://github.com/tpope/vim-surround/blob/master/doc/surround.txt][Instructions]]
+
+*NB.* This must be defined after sneak or sneak will steal key mappings.
+
+#+begin_src conf
+set surround
+#+end_src
+**** Quickscope
+
+Highlights characters on a line that can be used for quick forward and backward navigation.
+[[https://plugins.jetbrains.com/plugin/19417-ideavim-quickscope][Documentation]]
+
+#+begin_src conf
 set quickscope
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 let g:qs_accepted_chars = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 let g:qs_max_chars=120
 highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
 highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
+#+end_src
+**** Multiple cursors
 
+Allows multiple cursor editing.  There are better ways to do this without a plugin, need to find the reference and add here.
+[[https://github.com/terryma/vim-multiple-cursors/blob/master/doc/multiple_cursors.txt][Instructions]]
+
+#+begin_src conf
 set multiple-cursors
 
 "Needed for multiple-cursors according to the interwebs"
@@ -86,6 +150,13 @@ xmap <S-C-n> <Plug>AllWholeOccurrences
 nmap g<S-C-n> <Plug>AllOccurrences
 xmap g<S-C-n> <Plug>AllOccurrences
 
+#+end_src
+**** Easymotion
+
+Allows forward and backward motion beyond the current line and also using multiple characters.
+[[https://github.com/AlexPl292/IdeaVim-EasyMotion#supported-commands][Commands]]
+
+#+begin_src conf
 set easymotion
 #+end_src
 
@@ -384,43 +455,5 @@ map <leader>t <Action>(Terminal.OpenInTerminal)
 map <leader>os <Action>(Switcher)
 let g:WhichKeyDesc_other = "<leader>o Other"
 let g:WhichKeyDesc_switcher = "<leader>os Switcher"
-
-" Plugin help
-" Commentary:
-" gcc - comment current line
-" gc + motion - eg.  gc2j
-" gc - comment selected context
-" gcap - comment current paragraph
-" gcii - comment the current indent section - needs indent-object plugins
-" gcae - comment the entire file - needs textobj-entire plugin
-" gcgc uncomments a sit of adjacent commented lines
-
-" Surround:
-" cs, ds, ys"
-" It's easiest to explain with examples. Press cs"' inside
-"Hello world!"
-"to change it to
-"'Hello world!'
-"Now press cs'<q> to change it to
-"<q>Hello world!</q>
-"Hello world!"
-"To remove the delimiters entirely, press ds".
-"Hello world!
-"Now with the cursor on "Hello", press ysiw] (iw is a text object).
-"[Hello] world!
-"Let's make that braces and add some space (use } instead of { for no space): cs]{
-"{ Hello } world!
-"Now wrap the entire line in parentheses with yssb or yss).
-"({ Hello } world!)
-"Revert to the original text: ds{ds)
-"Hello world!
-"Emphasize hello: ysiw<em>
-"<em>Hello</em> world!
-"Finally, let's try out visual mode. Press a capital V (for linewise visual mode) followed by S<p class="important">.
-"<p class="important">
-"  <em>Hello</em> world!
-"</p>
-"This plugin is very powerful for HTML and XML editing, a niche which currently seems underfilled in Vim land. (As opposed to HTML/XML inserting, for which many plugins are available). Adding, changing, and removing pairs of tags simultaneously is a breeze.
-"The . command will work with ds, cs, and yss if you install repeat.vim.
 
 #+end_src

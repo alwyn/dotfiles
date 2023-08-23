@@ -1,5 +1,6 @@
 sethandler <C-A> a:ide
 sethandler <C-C> a:ide
+sethandler <C-D> a:vim  "Page down"
 sethandler <A-H> a:vim
 sethandler <C-I> a:vim
 sethandler <A-J> a:vim
@@ -7,6 +8,7 @@ sethandler <A-K> a:vim
 sethandler <A-L> a:vim
 sethandler <C-N> a:vim
 sethandler <C-O> a:vim
+sethandler <C-U> a:vim  "Page up"
 sethandler <C-V> a:vim  "Start visual mode in block mode"
 
 set argtextobj
@@ -15,12 +17,17 @@ let g:argtextobj_pairs="(:),{:},<:>,[:]"
 set commentary
 
 set highlightedyank
+
 set NERDTree
+
 set textobj-entire
-"set indent-object
+
+""set indent-object
+
 set which-key
+
 set sneak
-"" surround must come after sneak so that sneak don't steal S
+
 set surround
 
 set quickscope
@@ -338,41 +345,3 @@ map <leader>t <Action>(Terminal.OpenInTerminal)
 map <leader>os <Action>(Switcher)
 let g:WhichKeyDesc_other = "<leader>o Other"
 let g:WhichKeyDesc_switcher = "<leader>os Switcher"
-
-" Plugin help
-" Commentary:
-" gcc - comment current line
-" gc + motion - eg.  gc2j
-" gc - comment selected context
-" gcap - comment current paragraph
-" gcii - comment the current indent section - needs indent-object plugins
-" gcae - comment the entire file - needs textobj-entire plugin
-" gcgc uncomments a sit of adjacent commented lines
-
-" Surround:
-" cs, ds, ys"
-" It's easiest to explain with examples. Press cs"' inside
-"Hello world!"
-"to change it to
-"'Hello world!'
-"Now press cs'<q> to change it to
-"<q>Hello world!</q>
-"Hello world!"
-"To remove the delimiters entirely, press ds".
-"Hello world!
-"Now with the cursor on "Hello", press ysiw] (iw is a text object).
-"[Hello] world!
-"Let's make that braces and add some space (use } instead of { for no space): cs]{
-"{ Hello } world!
-"Now wrap the entire line in parentheses with yssb or yss).
-"({ Hello } world!)
-"Revert to the original text: ds{ds)
-"Hello world!
-"Emphasize hello: ysiw<em>
-"<em>Hello</em> world!
-"Finally, let's try out visual mode. Press a capital V (for linewise visual mode) followed by S<p class="important">.
-"<p class="important">
-"  <em>Hello</em> world!
-"</p>
-"This plugin is very powerful for HTML and XML editing, a niche which currently seems underfilled in Vim land. (As opposed to HTML/XML inserting, for which many plugins are available). Adding, changing, and removing pairs of tags simultaneously is a breeze.
-"The . command will work with ds, cs, and yss if you install repeat.vim.
