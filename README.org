@@ -3,7 +3,9 @@
 #+auto_tangle: t
 #+STARTUP: showeverything
 
-* HOME folder dotfile configs
+* HOME folder dotfile configs :toc:
+  - [[#ideavimrc-intellij-plugin-for-vim-mode][.ideavimrc: Intellij plugin for VIM mode]]
+
 ** .ideavimrc: Intellij plugin for VIM mode
 :PROPERTIES:
 :header-args: :tangle private_dot_ideavimrc
@@ -218,12 +220,6 @@ nnoremap <s-TAB> :tabprev<CR>
 " Keep visual indentation
 vnoremap < <gv
 vnoremap > >gv
-
-" Shortcutting split navigation
-map <a-h> <C-w>h
-map <a-j> <C-w>j
-map <a-k> <C-w>k
-map <a-l> <C-w>l
 
 " Use system clipboard, look into ideaput
 set clipboard+=unnamed

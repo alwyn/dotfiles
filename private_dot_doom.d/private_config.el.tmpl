@@ -30,7 +30,8 @@
  font-size-regular 20
  font-size-large 30
  doom-font (font-spec :family font-family :size font-size-regular :weight 'regular)
- doom-font-big (font-spec :family font-family :size font-size-large :weight 'bold))
+ doom-font-big (font-spec :family font-family :size font-size-large :weight 'bold)
+ projectile-project-search-path '("~/s/p/" "~/s/a/" "~/.local/share/chezmoi"))
 
 (cond (IS-MAC
        (setq mac-command-modifier 'meta
@@ -46,11 +47,12 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+;; (setq doom-theme 'doom-one)
+(setq doom-theme 'catppuccin)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type t)
+(setq display-line-numbers-type 'relative)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
@@ -74,6 +76,7 @@
 (map!
  (:after company
          (:map company-active-map
+               "C-SPC" 'company-abort
                "SPC" #'company-abort-with-space
                [escape] #'company-complete-selection)))
 

@@ -4,6 +4,8 @@ sethandler <C-D> a:vim  "Page down"
 sethandler <A-H> a:vim
 sethandler <C-I> a:vim
 sethandler <A-J> a:vim
+sethandler <C-J> a:vim
+sethandler <C-K> a:vim
 sethandler <A-K> a:vim
 sethandler <A-L> a:vim
 sethandler <C-N> a:vim
@@ -109,12 +111,6 @@ nnoremap <s-TAB> :tabprev<CR>
 vnoremap < <gv
 vnoremap > >gv
 
-" Shortcutting split navigation
-map <a-h> <C-w>h
-map <a-j> <C-w>j
-map <a-k> <C-w>k
-map <a-l> <C-w>l
-
 " Use system clipboard, look into ideaput
 set clipboard+=unnamed
 set clipboard+=ideaput
@@ -212,6 +208,8 @@ nnoremap <c-t> :action ActivateTerminalToolWindow<CR>
 " Execute macro saved in 'q' register
 nnoremap qj @q
 
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
 " ALWYN need to figure this out
 " Popup navigation
 "sethandler <C-j> a:vim
