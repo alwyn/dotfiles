@@ -57,6 +57,8 @@ yabai -m rule --add app="^FireFox$" space=7
 yabai -m rule --add app="^Google Chrome$" space=7
 yabai -m rule --add app="^Slack$" space=9
 yabai -m rule --add app="^VPN Tracker 365$" space=8
+yabai -m rule --add app="^SonicWall Mobile Connect$" manage=off
+yabai -m rule --add app="^Microsoft Remote Desktop$" manage=off
 yabai -m rule --add app="^Messages$" space=8
 yabai -m rule --add app="^SpaceLauncher$" manage=off
 yabai -m rule --add app="^Alacritty$" space=1
