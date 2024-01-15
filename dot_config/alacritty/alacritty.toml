@@ -1,0 +1,27 @@
+hide_cursor_when_typing = true
+live_config_reload = true
+
+[font]
+size = 20.0
+use_thin_keystrokes = true
+
+[font.bold]
+family = "SFMono Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "SFMono Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "SFMono Nerd Font"
+style = "Regular"
+
+[window]
+decorations = "buttonless"
+dynamic_padding = false
+opacity = 0.85
+
+[window.padding]
+x = 18
+y = 16
