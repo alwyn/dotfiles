@@ -44,12 +44,12 @@ The following defines the private tokens for Gitlab Release and Snapshot reposit
     </server>
     <server>
       <username>${security.getCurrentUsername()}</username>
-      <password>${security.getEscapedEncryptedPassword()!"cmVmdGtuOjAxOjE3NTUwMTk2NTQ6UHBNZjlud2d2NTdFUVg2NVlyZklNOXZXOHBF"}</password>
+      <password>${security.getEscapedEncryptedPassword()!"op://Private/3uombjwhbgz6hgj5s35ugtvdyq/password"}</password>
       <id>central</id>
     </server>
     <server>
       <username>${security.getCurrentUsername()}</username>
-      <password>${security.getEscapedEncryptedPassword()!"cmVmdGtuOjAxOjE3NTUwMTk2NTQ6UHBNZjlud2d2NTdFUVg2NVlyZklNOXZXOHBF"}</password>
+      <password>${security.getEscapedEncryptedPassword()!"op://Private/3uombjwhbgz6hgj5s35ugtvdyq/password"}</password>
       <id>snapshots</id>
     </server>
   </servers>
