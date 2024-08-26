@@ -9,7 +9,7 @@
 The following defines the private tokens for Gitlab Release and Snapshot repositories.
 
 #+begin_src conf
-<settings xmlns="http://maven.apache.org/SETTINGS/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<<settings xmlns="http://maven.apache.org/SETTINGS/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd">
   <servers>
     <server>
@@ -42,7 +42,56 @@ The following defines the private tokens for Gitlab Release and Snapshot reposit
         </httpHeaders>
       </configuration>
     </server>
+    <server>
+      <username>${security.getCurrentUsername()}</username>
+      <password>${security.getEscapedEncryptedPassword()!"cmVmdGtuOjAxOjE3NTUwMTk2NTQ6UHBNZjlud2d2NTdFUVg2NVlyZklNOXZXOHBF"}</password>
+      <id>central</id>
+    </server>
+    <server>
+      <username>${security.getCurrentUsername()}</username>
+      <password>${security.getEscapedEncryptedPassword()!"cmVmdGtuOjAxOjE3NTUwMTk2NTQ6UHBNZjlud2d2NTdFUVg2NVlyZklNOXZXOHBF"}</password>
+      <id>snapshots</id>
+    </server>
   </servers>
+  <profiles>
+    <profile>
+      <repositories>
+        <repository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>central</id>
+          <name>pt-maven-virtual-prod</name>
+          <url>https://paymentology.jfrog.io/artifactory/pt-maven-virtual-prod</url>
+        </repository>
+        <repository>
+          <snapshots />
+          <id>snapshots</id>
+          <name>pt-maven-virtual-dev</name>
+          <url>https://paymentology.jfrog.io/artifactory/pt-maven-virtual-dev</url>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>central</id>
+          <name>pt-maven-virtual-prod</name>
+          <url>https://paymentology.jfrog.io/artifactory/pt-maven-virtual-prod</url>
+        </pluginRepository>
+        <pluginRepository>
+          <snapshots />
+          <id>snapshots</id>
+          <name>pt-maven-virtual-dev</name>
+          <url>https://paymentology.jfrog.io/artifactory/pt-maven-virtual-dev</url>
+        </pluginRepository>
+      </pluginRepositories>
+      <id>artifactory</id>
+    </profile>
+  </profiles>
+  <activeProfiles>
+    <activeProfile>artifactory</activeProfile>
+  </activeProfiles>
 </settings>
-
 #+end_src
