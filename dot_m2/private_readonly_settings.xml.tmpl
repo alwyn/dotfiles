@@ -33,12 +33,12 @@
     </server>
     <server>
       <username>${security.getCurrentUsername()}</username>
-      <password>${security.getEscapedEncryptedPassword()!"op://Private/3uombjwhbgz6hgj5s35ugtvdyq/password"}</password>
+      <password>${security.getEscapedEncryptedPassword()!"{{ onepasswordRead "op://Private/3uombjwhbgz6hgj5s35ugtvdyq/password" }}"}</password>
       <id>central</id>
     </server>
     <server>
       <username>${security.getCurrentUsername()}</username>
-      <password>${security.getEscapedEncryptedPassword()!"op://Private/3uombjwhbgz6hgj5s35ugtvdyq/password"}</password>
+      <password>${security.getEscapedEncryptedPassword()!"{{ onepasswordRead "op://Private/3uombjwhbgz6hgj5s35ugtvdyq/password" }}"}</password>
       <id>snapshots</id>
     </server>
   </servers>
