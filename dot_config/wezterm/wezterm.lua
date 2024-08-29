@@ -44,6 +44,8 @@ config = {
 	enable_tab_bar = false,
 	window_close_confirmation = "NeverPrompt",
 	window_decorations = "RESIZE",
+	window_background_opacity = 0.8,
+	macos_window_background_blur = 10,
 	--	color_scheme = "Canvased Pastel (terminal.sexy)",
 	color_scheme = "catppuccin-mocha",
 	--font = wezterm.font("JetBrains Mono", { weight = "Bold" }),
