@@ -50,10 +50,16 @@ config = {
 	color_scheme = "catppuccin-mocha",
 	--font = wezterm.font("JetBrains Mono", { weight = "Bold" }),
 	font_size = 18,
+	line_height = 1.2,
 	native_macos_fullscreen_mode = true,
+	use_dead_keys = true,
+	scrollback_lines = 5000,
+	adjust_window_size_when_changing_font_size = false,
+	send_composed_key_when_left_alt_is_pressed = false, -- Fixes the left-alt sends <ESC> problem
+	send_composed_key_when_right_alt_is_pressed = true,
 }
 
-config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
+config.leader = { key = " ", mods = "CTRL", timeout_milliseconds = 1000 }
 
 config.keys = {
 	-- move between split panes

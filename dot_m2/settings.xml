@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.2.0 http://maven.apache.org/xsd/settings-1.2.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.2.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <servers>
+        <server>
+            <username>${env.ARTIFACTORY_USERNAME}</username>
+            <password>${env.ARTIFACTORY_TOKEN}</password>
+            <id>artifactory</id>
+        </server>
+        <server>
+            <username>${env.ARTIFACTORY_USERNAME}</username>
+            <password>${env.ARTIFACTORY_TOKEN}</password>
+            <id>artifactory-dev</id>
+        </server>
+    </servers>
+    <mirrors>
+        <mirror>
+            <mirrorOf>*</mirrorOf>
+            <name>pt-maven-virtual-dev</name>
+            <url>https://paymentology.jfrog.io/artifactory/pt-maven-virtual-dev</url>
+            <id>artifactory</id>
+        </mirror>
+    </mirrors>
+    <profiles>
+        <profile>
+            <repositories>
+                <repository>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                    <id>artifactory</id>
+                    <name>pt-maven-virtual-prod</name>
+                    <url>https://paymentology.jfrog.io/artifactory/pt-maven-virtual-prod</url>
+                </repository>
+                <repository>
+                    <snapshots />
+                    <id>artifactory-dev</id>
+                    <name>pt-maven-virtual-dev</name>
+                    <url>https://paymentology.jfrog.io/artifactory/pt-maven-virtual-dev</url>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                    <id>artifactory</id>
+                    <name>pt-maven-virtual-prod</name>
+                    <url>https://paymentology.jfrog.io/artifactory/pt-maven-virtual-prod</url>
+                </pluginRepository>
+                <pluginRepository>
+                    <snapshots />
+                    <id>artifactory-dev</id>
+                    <name>pt-maven-virtual-dev</name>
+                    <url>https://paymentology.jfrog.io/artifactory/pt-maven-virtual-dev</url>
+                </pluginRepository>
+            </pluginRepositories>
+            <id>artifactory</id>
+        </profile>
+    </profiles>
+    <activeProfiles>
+        <activeProfile>artifactory</activeProfile>
+        <!-- uncomment if the Maven project uses this profile to build an executable jar
+        with all dependencies bundled inside
+        <activeProfile>uber-jar</activeProfile>
+        -->
+    </activeProfiles>
+</settings>

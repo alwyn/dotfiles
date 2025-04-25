@@ -5,6 +5,7 @@
 
 * HOME folder dotfile configs :toc:
   - [[#ideavimrc-intellij-plugin-for-vim-mode][.ideavimrc: Intellij plugin for VIM mode]]
+  - [[#gitconfig][.gitconfig]]
 
 ** .ideavimrc: Intellij plugin for VIM mode
 :PROPERTIES:
@@ -27,6 +28,8 @@ sethandler <C-D> a:vim  "Page down"
 sethandler <A-H> a:vim
 sethandler <C-I> a:vim
 sethandler <A-J> a:vim
+sethandler <C-J> a:vim
+sethandler <C-K> a:vim
 sethandler <A-K> a:vim
 sethandler <A-L> a:vim
 sethandler <C-N> a:vim
@@ -230,13 +233,22 @@ set timeoutlen = 2000
 
 let mapleader = " "
 
-let g:NERDTreeMapActivateNode='l'
-let g:NERDTreeMapJumpParent='h'
+" This seems to interfere with 'o'
+""let g:NERDTreeMapActivateNode='l'
+""let g:NERDTreeMapJumpParent='h'
 
 let g:WhichKey_FontSize = 16
 let g:WhichKey_CommandColor = "#41ead4"
 let g:WhichKey_PrefixColor = "#f335b2"
 let g:WhichKey_SortOrder = "by_key_prefix_first"
+
+"copilot"
+map <leader>ci <action>(OpenInlineChatAction)
+let g:WhichKeyDesc_copilot_inline = "<leader>ci Inline chat"
+
+" quicK stuff"
+map <leader>kc <action>(QuickJavaDoc)
+let g:WhichKeyDesc_quick_docs = "<leader>kc Java Documentation"
 
 " Close stuff
 map <leader>q <Action>(CloseContent)
@@ -293,6 +305,8 @@ let g:WhichKeyDesc_refactoring_all = "<leader>rr Open refactorings list"
 let g:WhichKeyDesc_terminal = "<leader>t Open in terminal"
 
 inoremap jk <Esc>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
 
 " Ideavimrc"
 nnoremap \e :e ~/.ideavimrc<CR>
@@ -331,7 +345,8 @@ nnoremap qj @q
 " ========================================================
 
 " Jump around with easymotion
-map <leader>j <Plug>(easymotion-s)
+map <leader>J <Plug>(easymotion-s)
+map <leader>j <Plug>(easymotion-f)
 
 " Open NERDTree (use q to quit)
 map <leader>xf :NERDTreeFocus<CR>
@@ -449,4 +464,75 @@ map <leader>os <Action>(Switcher)
 let g:WhichKeyDesc_other = "<leader>o Other"
 let g:WhichKeyDesc_switcher = "<leader>os Switcher"
 
+#+end_src
+
+** .gitconfig
+:PROPERTIES:
+:header-args: :tangle private_dot_gitconfig
+:END:
+*** User
+
+#+begin_src conf
+[user]
+  name = {{ .name }}
+  email = {{ .proton }}
+  signingKey = 2339AD153EB4F73F
+#+end_src
+*** Core
+
+#+begin_src conf
+[core]
+#+end_src
+**** Pager
+#+begin_src conf
+  pager = delta
+#+end_src
+*** Commit
+#+begin_src conf
+[commit]
+#+end_src
+**** GPG signature
+#+begin_src conf
+  gpgsign = true
+#+end_src
+*** Delta
+#+begin_src conf
+[delta]
+  navigate = true
+#+end_src
+*** Diff
+#+begin_src conf
+[diff]
+  colorMoved = default
+#+end_src
+*** Init
+#+begin_src conf
+[init]
+  defaultbranch = main
+#+end_src
+*** Merge
+#+begin_src conf
+[merge]
+  conflictstyle = diff3
+#+end_src
+*** Rerere
+#+begin_src conf
+[rerere]
+  enabled = true
+#+end_src
+*** Personal config
+#+begin_src conf
+[includeIf "gitdir:~/s/a/"]
+  path = ~/.config/git/alwyn.gitconfig
+#+end_src
+*** Work config
+#+begin_src conf
+[includeIf "gitdir:~/s/p/"]
+  path = ~/.config/git/paymentology.gitconfig
+#+end_src
+*** Interactive
+#+begin_src conf
+[interactive]
+  diffFilter = delta --color-only
+  blah
 #+end_src

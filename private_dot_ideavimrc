@@ -120,13 +120,21 @@ set timeoutlen = 2000
 
 let mapleader = " "
 
-let g:NERDTreeMapActivateNode='l'
-let g:NERDTreeMapJumpParent='h'
+"let g:NERDTreeMapActivateNode='l'
+"let g:NERDTreeMapJumpParent='h'
 
 let g:WhichKey_FontSize = 16
 let g:WhichKey_CommandColor = "#41ead4"
 let g:WhichKey_PrefixColor = "#f335b2"
 let g:WhichKey_SortOrder = "by_key_prefix_first"
+
+"copilot"
+map <leader>ci <action>(OpenInlineChatAction)
+let g:WhichKeyDesc_copilot_inline = "<leader>ci Inline chat"
+
+" quicK stuff"
+map <leader>kc <action>(QuickJavaDoc)
+let g:WhichKeyDesc_quick_docs = "<leader>kc Java Documentation"
 
 " Close stuff
 map <leader>q <Action>(CloseContent)
@@ -183,6 +191,8 @@ let g:WhichKeyDesc_refactoring_all = "<leader>rr Open refactorings list"
 let g:WhichKeyDesc_terminal = "<leader>t Open in terminal"
 
 inoremap jk <Esc>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
 
 " Ideavimrc"
 nnoremap \e :e ~/.ideavimrc<CR>
@@ -208,8 +218,6 @@ nnoremap <c-t> :action ActivateTerminalToolWindow<CR>
 " Execute macro saved in 'q' register
 nnoremap qj @q
 
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
 " ALWYN need to figure this out
 " Popup navigation
 "sethandler <C-j> a:vim
@@ -223,14 +231,16 @@ inoremap <C-k> <Up>
 " ========================================================
 
 " Jump around with easymotion
-map <leader>j <Plug>(easymotion-s)
+map <leader>J <Plug>(easymotion-s)
+map <leader>j <Plug>(easymotion-f)
 
 " Open NERDTree (use q to quit)
-map <leader>xf :NERDTreeFocus<CR>
-map <leader>xt :NERDTreeToggle<CR>
-let g:WhichKeyDesc_nerd = "<leader>x Explorer"
-let g:WhichKeyDesc_nerd_focus = "<leader>xf Focus"
-let g:WhichKeyDesc_nerd_toggle = "<leader>xt Toggle"
+map <C-f> :NERDTree<CR>
+"map <leader>xf :NERDTreeFocus<CR>
+"map <leader>xt :NERDTreeToggle<CR>
+"let g:WhichKeyDesc_nerd = "<leader>x Explorer"
+"let g:WhichKeyDesc_nerd_focus = "<leader>xf Focus"
+"let g:WhichKeyDesc_nerd_toggle = "<leader>xt Toggle"
 
 " Folding
 map <leader>zc :action CollapseAllRegions<CR>

@@ -3,11 +3,29 @@
   email = {{ .proton }}
   signingkey = 2339AD153EB4F73F
 
+[core]
+  pager = delta
+
 [commit]
   gpgsign = true
 
+[delta]
+  navigate = true
+
+[diff]
+  colorMoved = default
+
+[fetch]
+  prune = true
+
 [init]
   defaultbranch = main
+
+[merge]
+  conflictstyle = diff3
+
+[rebase]
+  updateRefs = true
 
 [rerere]
   enabled = true
@@ -17,3 +35,7 @@
 
 [includeIf "gitdir:~/s/p/"]
   path = ~/.config/git/paymentology.gitconfig
+
+[interactive]
+  diffFilter = delta --color-only
+
