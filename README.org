@@ -468,7 +468,7 @@ let g:WhichKeyDesc_switcher = "<leader>os Switcher"
 
 ** .gitconfig
 :PROPERTIES:
-:header-args: :tangle private_dot_gitconfig
+:header-args: :tangle private_dot_gitconfig.tmpl
 :END:
 *** User
 
@@ -528,6 +528,9 @@ let g:WhichKeyDesc_switcher = "<leader>os Switcher"
 *** Work config
 #+begin_src conf
 [includeIf "gitdir:~/s/p/"]
+  path = ~/.config/git/paymentology.gitconfig
+
+[includeIf "gitdir:~/s/bl/"]
   path = ~/.config/git/paymentology.gitconfig
 #+end_src
 *** Interactive
